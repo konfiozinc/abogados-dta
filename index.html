@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#000000"/>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Dr. Alí Montalvo Avila – Abogados DTA</title>
+<title>Dr. Alí Montalvo – Abogados DTA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -1181,7 +1181,7 @@ body {
 
     <div class="hero-text">
       <div class="hero-firm">Abogados DTA · Bogotá, Colombia</div>
-      <h1 class="hero-name"><em>Dr.</em> Alí Montalvo Avila</h1>
+      <h1 class="hero-name"><em>Dr.</em> Alí Montalvo</h1>
       <div class="hero-title">Abogado Especialista</div>
       <div class="hero-spec">Derecho Administrativo &amp; Contractual</div>
 
@@ -1532,7 +1532,7 @@ body {
 <div class="share-overlay" id="shareOverlay" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="share-sheet">
     <div class="share-title">Compartir Tarjeta</div>
-    <div class="share-sub">Dr. Alí Montalvo Avila – Abogados DTA</div>
+    <div class="share-sub">Dr. Alí Montalvo – Abogados DTA</div>
     <div class="share-grid">
       <a class="share-opt" href="whatsapp://send?text=Te%20comparto%20la%20tarjeta%20del%20Dr.%20Al%C3%AD%20Montalvo%20%E2%80%93%20Abogados%20DTA%20%F0%9F%93%B1%20%2B57%20310%20583%208217">
         <div class="share-opt-icon" style="color:#25d366;border-color:rgba(37,211,102,0.3)">
@@ -1936,8 +1936,8 @@ function copyLink() {
 function saveContact() {
   const vcf = `BEGIN:VCARD
 VERSION:3.0
-FN:Alí Montalvo Avila
-N:Montalvo Avila;Alí;;;
+FN:Alí Montalvo
+N:Montalvo;Alí;;;
 ORG:Abogados DTA
 TITLE:Abogado - Esp. Derecho Administrativo y Contractual
 TEL;TYPE=CELL,VOICE:+573105838217
@@ -1950,7 +1950,7 @@ END:VCARD`;
   const blob = new Blob([vcf], { type: 'text/vcard' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = 'Ali_Montalvo_Avila_DTA.vcf';
+  a.href = url; a.download = 'Alí_Montalvo_DTA.vcf';
   a.click();
   URL.revokeObjectURL(url);
 }
