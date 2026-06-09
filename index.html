@@ -1921,6 +1921,31 @@ body.light-mode .share-sheet {
   "knowsAbout": ["Derecho Administrativo","Derecho Contractual","Fuero Militar","Derecho Disciplinario","Derecho Penal","Derecho Laboral"]
 }
 </script>
+<!-- ── FIREBASE SDK ── -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+/* ═══════════════════════════════════════════════
+   FIREBASE CONFIG — pegar credenciales aquí
+   Proyecto: abogados-dta (Firebase Console)
+═══════════════════════════════════════════════ */
+const firebaseConfig = {
+  apiKey:            "PEGAR_API_KEY",
+  authDomain:        "abogados-dta.firebaseapp.com",
+  databaseURL:       "https://abogados-dta-default-rtdb.firebaseio.com",
+  projectId:         "abogados-dta",
+  storageBucket:     "abogados-dta.appspot.com",
+  messagingSenderId: "PEGAR_SENDER_ID",
+  appId:             "PEGAR_APP_ID"
+};
+try {
+  firebase.initializeApp(firebaseConfig);
+  window._db = firebase.database();
+  window._fbReady = true;
+} catch(e) {
+  window._fbReady = false;
+}
+</script>
 </head>
 <body>
 
@@ -2898,6 +2923,11 @@ function openSvc(id) {
     el.setAttribute('aria-modal', 'true');
     document.body.style.overflow = 'hidden';
   }
+  // Analytics: registrar servicio visto
+  if (window._fbReady) {
+    const svcName = id.replace('svc_','');
+    window._db.ref('stats/servicios/' + svcName).transaction(v => (v||0)+1);
+  }
 }
 function closeSvc() {
   document.querySelectorAll('.svc-overlay').forEach(o => o.classList.remove('active'));
@@ -3051,26 +3081,74 @@ function toggleTheme() {
 })();
 
 /* ═══════════════════════════════════════════════
-   CONTADOR DE VISITAS (localStorage)
+   CONTADOR DE VISITAS — Firebase Realtime DB
 ═══════════════════════════════════════════════ */
 (function() {
-  const VISIT_KEY = 'dta-visits';
-  let visits = parseInt(localStorage.getItem(VISIT_KEY) || '0');
-  // Solo contar si la sesión es nueva (evitar recargas)
-  if (!sessionStorage.getItem('dta-session')) {
-    visits++;
-    localStorage.setItem(VISIT_KEY, visits);
-    sessionStorage.setItem('dta-session', '1');
-  }
-  const el = document.getElementById('visitNum');
-  if (el) {
-    // Animar el número
-    let start = Math.max(0, visits - 15);
+  // Detectar canal de entrada
+  const params = new URLSearchParams(window.location.search);
+  const canal  = params.get('utm_source') || params.get('src') || 'directo';
+  const ref    = document.referrer;
+  const origen = ref.includes('whatsapp') ? 'whatsapp'
+               : ref.includes('linkedin')  ? 'linkedin'
+               : ref.includes('facebook')  ? 'facebook'
+               : ref.includes('instagram') ? 'instagram'
+               : canal;
+
+  function animarNum(el, target) {
+    let start = Math.max(0, target - 20);
     const timer = setInterval(() => {
       start++;
       el.textContent = start.toLocaleString('es-CO');
-      if (start >= visits) clearInterval(timer);
-    }, 60);
+      if (start >= target) clearInterval(timer);
+    }, 50);
+  }
+
+  const el = document.getElementById('visitNum');
+
+  if (window._fbReady) {
+    const db = window._db;
+    const hoy = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+
+    // Solo contar si la sesión es nueva
+    if (!sessionStorage.getItem('dta-session')) {
+      sessionStorage.setItem('dta-session', '1');
+
+      // Incrementar contador global
+      db.ref('stats/visitas_total').transaction(v => (v || 0) + 1);
+
+      // Contador por día
+      db.ref('stats/por_dia/' + hoy).transaction(v => (v || 0) + 1);
+
+      // Contador por canal
+      db.ref('stats/por_canal/' + origen).transaction(v => (v || 0) + 1);
+
+      // Registrar visita individual (últimas 100)
+      const visitData = {
+        ts: Date.now(),
+        hora: new Date().toLocaleTimeString('es-CO', {hour:'2-digit',minute:'2-digit'}),
+        dia: hoy,
+        canal: origen,
+        ua: navigator.userAgent.slice(0,80)
+      };
+      db.ref('visitas').push(visitData);
+    }
+
+    // Leer el total y animarlo
+    db.ref('stats/visitas_total').once('value', snap => {
+      const total = snap.val() || 1;
+      if (el) animarNum(el, total);
+    });
+
+  } else {
+    // Fallback localStorage si Firebase no está configurado
+    const VISIT_KEY = 'dta-visits';
+    let visits = parseInt(localStorage.getItem(VISIT_KEY) || '0');
+    if (!sessionStorage.getItem('dta-session')) {
+      visits++;
+      localStorage.setItem(VISIT_KEY, visits);
+      sessionStorage.setItem('dta-session', '1');
+    }
+    if (el) animarNum(el, visits);
   }
 })();
 
@@ -3168,8 +3246,24 @@ function enviarPreconsulta() {
   const desc   = document.getElementById('fcDesc').value.trim();
   if (!nombre) { document.getElementById('fcNombre').focus(); return; }
   if (!area)   { document.getElementById('fcArea').focus(); return; }
-  const msg = `Hola Dr. Alí, soy *${nombre}*. Necesito asesoría en *${area}*.${desc ? '%0A%0A' + encodeURIComponent(desc) : ''}%0A%0A_Enviado desde su tarjeta digital._`;
-  const waUrl = `whatsapp://send?phone=573105838217&text=${msg.replace(/ /g,'%20')}`;
+
+  // Analytics: registrar lead
+  if (window._fbReady) {
+    const db = window._db;
+    const leadData = {
+      ts: Date.now(),
+      dia: new Date().toISOString().slice(0,10),
+      hora: new Date().toLocaleTimeString('es-CO', {hour:'2-digit',minute:'2-digit'}),
+      area: area,
+      nombre: nombre.split(' ')[0] + (nombre.split(' ')[1] ? ' ' + nombre.split(' ')[1][0] + '.' : '')
+    };
+    db.ref('leads').push(leadData);
+    db.ref('stats/leads_total').transaction(v => (v||0)+1);
+    db.ref('stats/leads_por_area/' + area.replace(/[^a-zA-Z]/g,'_').slice(0,30)).transaction(v => (v||0)+1);
+  }
+
+  const msg = 'Hola Dr. Alí, soy *' + nombre + '*. Necesito asesoría en *' + area + '*.' + (desc ? '%0A%0A' + encodeURIComponent(desc) : '') + '%0A%0A_Enviado desde su tarjeta digital._';
+  const waUrl = 'whatsapp://send?phone=573105838217&text=' + msg.replace(/ /g,'%20');
   window.location.href = waUrl;
   closePreconsulta();
 }
@@ -3238,6 +3332,33 @@ window.addEventListener('appinstalled', () => {
   link.rel = 'manifest';
   link.href = url;
   document.head.appendChild(link);
+})();
+
+/* ═══════════════════════════════════════════════
+   TRACKING BOTONES DE ACCIÓN
+═══════════════════════════════════════════════ */
+(function() {
+  const acciones = {
+    'tel:+573105838217'     : 'llamada',
+    'whatsapp://send?phone=573105838217&text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa' : 'whatsapp_directo',
+    'mailto:alimontalvo@hotmail.com' : 'email'
+  };
+  document.querySelectorAll('.action-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const href = btn.getAttribute('href') || '';
+      const accion = acciones[href] || (btn.getAttribute('onclick') || '').includes('saveContact') ? 'guardar_contacto'
+                   : (btn.getAttribute('onclick') || '').includes('openShare') ? 'compartir' : null;
+      if (accion && window._fbReady) {
+        window._db.ref('stats/acciones/' + accion).transaction(v => (v||0)+1);
+      }
+    });
+  });
+
+  // Trackear FAB WhatsApp
+  const fab = document.querySelector('.fab-wa');
+  if (fab) fab.addEventListener('click', () => {
+    if (window._fbReady) window._db.ref('stats/acciones/whatsapp_fab').transaction(v => (v||0)+1);
+  });
 })();
 </script>
 </body>
