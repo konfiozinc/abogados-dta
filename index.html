@@ -106,12 +106,13 @@
     .swiper-container { width:100%; border-radius:16px; overflow:hidden; }
     .swiper-slide img { width:100%; aspect-ratio:1/1; object-fit:cover; display:block; }
 
-    .cta-bar { position:sticky; bottom:0; background:var(--card-bg); border-top:1px solid rgba(201,168,76,0.15); padding:10px 12px; display:flex; justify-content:space-around; align-items:center; z-index:50; }
+    .sticky-navbar { position:sticky; bottom:0; background:var(--card-bg); border-top:1px solid rgba(201,168,76,0.15); z-index: 50; display:flex; flex-direction:column; }
+    .cta-bar { padding:10px 12px; display:flex; justify-content:space-around; align-items:center; }
     .cta-item { display:flex; flex-direction:column; align-items:center; gap:2px; text-decoration:none; color:var(--text-mute); font-size:9px; font-weight:500; transition:all .2s; cursor:pointer; background:none; border:none; }
     .cta-item i { font-size:1.2rem; color:var(--gold); }
     .cta-item:active { transform:scale(.92); }
 
-    .footer-credit { text-align:center; font-size:9px; color:#555; padding:8px 0 4px; background:var(--card-bg); letter-spacing:.05em; border-top:1px solid rgba(255,255,255,0.03); }
+    .footer-credit { text-align:center; font-size:8px; tracking-width: 0.05em; color:#555; padding:0px 0 6px; bg:var(--card-bg); text-transform: uppercase; font-weight: 500; }
     .footer-credit a { color:var(--gold); text-decoration:none; font-weight:600; }
 
     .toast { position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px); background:#1a1a1a; color:#fff; padding:8px 20px; border-radius:999px; font-size:13px; opacity:0; pointer-events:none; transition:all .3s; z-index:2000; }
@@ -124,7 +125,7 @@
 </head>
 <body>
 
-<div class="card-container">
+<div class="card-container text-slate-100">
 
   <!-- SPLASH -->
   <div id="splash">
@@ -197,17 +198,18 @@
     <div class="access-btn" data-modal="infoModal"><i class="fas fa-info-circle"></i><span>Información</span></div>
   </div>
 
-  <!-- CTA FIJO INFERIOR -->
-  <div class="cta-bar">
-    <a href="https://wa.me/573105838217" target="_blank" class="cta-item"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-    <a href="tel:+573105838217" class="cta-item"><i class="fas fa-phone-alt"></i><span>Llamar</span></a>
-    <button class="cta-item" id="shareBtn"><i class="fas fa-share-alt"></i><span>Compartir</span></button>
-    <button class="cta-item" id="saveContactBtn"><i class="fas fa-address-card"></i><span>Guardar</span></button>
-  </div>
-
-  <!-- PIE DE TARJETA -->
-  <div class="footer-credit">
-    Tarjeta creada por <a href="https://konfiozinc.github.io/" target="_blank">KONFÍO ZINC</a>
+  <!-- 12. BARRA DE NAVEGACIÓN INFERIOR & PIE DE TARJETA ACTUALIZADO -->
+  <div class="sticky-navbar">
+    <nav class="cta-bar">
+      <a href="https://wa.me/573105838217" target="_blank" class="cta-item"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+      <a href="tel:+573105838217" class="cta-item"><i class="fas fa-phone-alt"></i><span>Llamar</span></a>
+      <button class="cta-item" id="shareBtn"><i class="fas fa-share-alt"></i><span>Compartir</span></button>
+      <button class="cta-item" id="saveContactBtn"><i class="fas fa-address-card"></i><span>Guardar</span></button>
+    </nav>
+    <!-- SELLO OFICIAL DE MARCA MANDATORIO V2.0 -->
+    <div class="footer-credit">
+        Creado por <a href="https://konfiozinc.github.io/" target="_blank">KONFÍO ZINC</a> — Todos los derechos reservados
+    </div>
   </div>
 </div>
 
