@@ -1,0 +1,15 @@
+{
+  "name": "Alí Montalvo Avila – Abogados DTA",
+  "short_name": "Abogados DTA",
+  "description": "Tarjeta digital de Alí Montalvo Avila, abogado. Asesoría legal especializada en derecho administrativo, contractual, civil, penal, disciplinario, laboral y comercial.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "es",
+  "icons": [
+    { "src": "assets/logo/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/logo/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
