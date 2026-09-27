@@ -341,3 +341,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+/* ============================================================
+   Google Analytics 4 · eventos personalizados
+   Clic en WhatsApp (wa.me y api.whatsapp.com). Delegado en document para
+   cubrir también enlaces creados en tiempo de ejecución. Sin datos personales.
+   ============================================================ */
+function dtaTrack(nombre, etiqueta) {
+  try {
+    if (typeof gtag === 'function') {
+      gtag('event', nombre, {
+        event_category: 'engagement',
+        event_label: etiqueta,
+        value: 1,
+        transport_type: 'beacon'
+      });
+    }
+  } catch (e) { /* el tracking nunca debe romper la página */ }
+}
+
+document.addEventListener('click', (e) => {
+  const a = (e.target && e.target.closest)
+    ? e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href*="whatsapp.com/send"]')
+    : null;
+  if (!a) return;
+  let etiqueta = 'otro';
+  const texto = (a.textContent || '').toLowerCase();
+  if (a.closest('footer')) etiqueta = 'footer';
+  else if (a.closest('header') || a.closest('.card-top')) etiqueta = 'encabezado';
+  else if (texto.indexOf('compartir') !== -1 || a.getAttribute('href').indexOf('api.whatsapp.com') !== -1) etiqueta = 'compartir';
+  else if (a.closest('.servicio') || a.closest('.acordeon') || a.closest('.item')) etiqueta = 'servicio';
+  else if (a.closest('.botonera') || a.closest('.acciones') || a.closest('.cta')) etiqueta = 'boton_principal';
+  dtaTrack('click_whatsapp', etiqueta);
+});
