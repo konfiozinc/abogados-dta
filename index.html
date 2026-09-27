@@ -13,6 +13,9 @@
 <meta property="og:description" content="Asesoría legal especializada. Contacto directo por WhatsApp, teléfono y correo.">
 <meta property="og:url" content="https://konfiozinc.github.io/abogados-dta/">
 <meta property="og:image" content="https://konfiozinc.github.io/abogados-dta/assets/logo/dta-logo.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="800">
+<meta property="og:locale" content="es_CO">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Alí Montalvo Avila – Abogados DTA">
 <meta name="twitter:description" content="Asesoría legal especializada.">
@@ -20,6 +23,10 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="assets/logo/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/logo/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,15 +37,11 @@
   "email": "abogadosdta@gmail.com",
   "url": "https://konfiozinc.github.io/abogados-dta/",
   "image": "https://konfiozinc.github.io/abogados-dta/assets/logo/dta-logo.jpg",
-  "address": { "@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO" }
+  "address": { "@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO" },
+  "areaServed": { "@type": "Country", "name": "Colombia" },
+  "knowsAbout": ["Derecho Administrativo","Derecho Contractual","Derecho de Familia","Derecho Civil","Derecho Penal","Derecho Disciplinario","Accidentes de Tránsito","Derecho Laboral","Justicia Penal Militar","Derecho Comercial"]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="styles.css">
-
 <script>
 const GA_ID = 'G-0JKTZNMPWX';
 if (GA_ID && !/^G-XXXX/.test(GA_ID)) {
@@ -51,466 +54,105 @@ if (GA_ID && !/^G-XXXX/.test(GA_ID)) {
   gtag('js', new Date());
   gtag('config', GA_ID);
 }
-</script></head>
+</script>
+</head>
 <body>
 
 <div class="card-wrap">
-  <div class="corner corner-tl"></div>
-  <div class="corner corner-tr"></div>
-  <div class="corner corner-bl"></div>
-  <div class="corner corner-br"></div>
+  <div class="corner corner-tl" aria-hidden="true"></div>
+  <div class="corner corner-tr" aria-hidden="true"></div>
+  <div class="corner corner-bl" aria-hidden="true"></div>
+  <div class="corner corner-br" aria-hidden="true"></div>
 
   <!-- ── HERO ── -->
-  <div class="hero fade-up d1">
-    <img src="assets/logo/dta-logo.jpg" alt="Alí Montalvo Avila – Abogados DTA" loading="lazy" decoding="async" width="130" height="130">
+  <header class="hero fade-up d1">
+    <img src="assets/logo/dta-logo.jpg" alt="Logotipo de Abogados DTA – Alí Montalvo Avila" decoding="async" width="120" height="120">
     <div class="firm-name">Abogados DTA</div>
-    <h1 class="lawyer-name">Alí<br>Montalvo Avila</h1>
+    <h1 class="lawyer-name">Alí Montalvo Avila</h1>
     <div class="lawyer-title">⚖️ Abogado</div>
     <div class="lawyer-spec">Esp. Derecho Administrativo y Contractual</div>
-    <div class="gold-sep"><span>✦ DTA ✦</span></div>
+    <div class="gold-sep" aria-hidden="true"><span>✦ DTA ✦</span></div>
     <p class="slogan">"Blindaje Legal Para Quienes<br>Protegen La Nación"</p>
-  </div>
+  </header>
 
-        <!-- ── ACTION BUTTONS ── -->
-  <div class="actions fade-up d2">
+  <!-- ── 6 ACCIONES ── -->
+  <nav class="actions fade-up d2" aria-label="Acciones de contacto">
+    <a class="action-btn ripple-btn" id="aWhatsapp" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp al +57 310 583 8217">
+      <span class="action-icon wa"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.347-.347.52-.52.174-.174.232-.298.347-.497.116-.198.058-.371-.014-.52-.072-.148-.643-1.55-.881-2.114-.235-.554-.475-.48-.652-.489-.169-.008-.363-.01-.557-.01-.194 0-.51.073-.777.371-.267.298-1.02.996-1.02 2.428 0 1.432 1.045 2.816 1.19 3.01.145.194 2.055 3.14 4.98 4.402.696.3 1.24.479 1.663.613.699.222 1.335.191 1.838.116.56-.084 1.72-.703 1.963-1.382.242-.679.242-1.26.17-1.382-.073-.122-.267-.194-.564-.343M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg></span>
+      <span class="action-label">WhatsApp</span>
+    </a>
 
-    <a class="action-btn ripple-btn"
-       href="tel:+573105838217">
-      <div class="action-icon" style="color:#d4af37"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.12-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg></div>
+    <a class="action-btn ripple-btn" id="aLlamar" href="tel:+573105838217" aria-label="Llamar al +57 310 583 8217">
+      <span class="action-icon oro"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.12-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg></span>
       <span class="action-label">Llamar</span>
     </a>
 
-    <a class="action-btn ripple-btn"
-       href="mailto:alimontalvo@hotmail.com">
-      <div class="action-icon" style="color:#ea4335;border-color:rgba(234,67,53,0.3);background:rgba(234,67,53,0.07)"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-      <span class="action-label">Personal</span>
+    <a class="action-btn ripple-btn" id="aCorreo" href="mailto:abogadosdta@gmail.com" aria-label="Enviar correo a abogadosdta@gmail.com">
+      <span class="action-icon rojo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+      <span class="action-label">Correo</span>
     </a>
 
-    <a class="action-btn ripple-btn"
-       href="mailto:abogadosdta@gmail.com">
-      <div class="action-icon" style="color:#4285f4;border-color:rgba(66,133,244,0.3);background:rgba(66,133,244,0.07)"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-      <span class="action-label">Corporativo</span>
-    </a>
-
-    <a class="action-btn ripple-btn"
-       href="#"
-       onclick="document.getElementById('shareOverlay').classList.add('active'); return false;">
-      <div class="action-icon" style="color:var(--gold)"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
-      <span class="action-label">Compartir</span>
-    </a>
-
-    <a class="action-btn ripple-btn"
-       href="geo:4.7110,-74.0721?q=Bogotá,Colombia">
-      <div class="action-icon" style="color:#fbbc05;border-color:rgba(251,188,5,0.3);background:rgba(251,188,5,0.07)"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+    <a class="action-btn ripple-btn" id="aMapa" href="#" target="_blank" rel="noopener" aria-label="Ver ubicación en Google Maps: Bogotá, Colombia">
+      <span class="action-icon amarillo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
       <span class="action-label">Ubicación</span>
     </a>
 
-    <a class="action-btn ripple-btn"
-       href="#"
-       onclick="saveContact(); return false;">
-      <div class="action-icon" style="color:var(--gold2)"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+    <button class="action-btn ripple-btn" id="btnCompartir" type="button" aria-label="Compartir esta tarjeta">
+      <span class="action-icon oro"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></span>
+      <span class="action-label">Compartir</span>
+    </button>
+
+    <button class="action-btn ripple-btn" id="btnGuardar" type="button" aria-label="Guardar contacto en el teléfono (vCard)">
+      <span class="action-icon oro2"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span>
       <span class="action-label">Guardar</span>
-    </a>
+    </button>
+  </nav>
 
-  </div>
+  <!-- ── BOTONES SECUNDARIOS ── -->
+  <nav class="secundarias fade-up d3" aria-label="Más información">
+    <button class="sec-btn" id="btnServicios" type="button">
+      <span aria-hidden="true">📋</span> Servicios jurídicos
+    </button>
+    <button class="sec-btn" id="btnSobre" type="button">
+      <span aria-hidden="true">👤</span> Sobre el abogado
+    </button>
+  </nav>
 
-  <!-- ── SOCIAL NETWORKS ── -->
-  <div class="socials fade-up d2b">
-    <a class="social-btn" href="intent://www.facebook.com/abogadosdta#Intent;scheme=https;package=com.facebook.katana;S.browser_fallback_url=https%3A%2F%2Ffacebook.com%2Fabogadosdta;end">
-      <div class="social-icon" style="color:#1877f2;border-color:rgba(24,119,242,0.35);background:rgba(24,119,242,0.08)"><svg viewBox="0 0 24 24" width="15" height="15" fill="#1877f2"><path d="M24 12.073C24 5.406 18.627 0 12 0S0 5.406 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.278h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></div>
-      <span class="social-label">Facebook</span>
-    </a>
-    <a class="social-btn" href="intent://www.instagram.com/abogadosdta#Intent;scheme=https;package=com.instagram.android;S.browser_fallback_url=https%3A%2F%2Finstagram.com%2Fabogadosdta;end">
-      <div class="social-icon" style="border-color:rgba(225,48,108,0.35);background:rgba(225,48,108,0.07)"><svg viewBox="0 0 24 24" width="22" height="22"><defs><radialGradient id="ig" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
-      <span class="social-label">Instagram</span>
-    </a>
-    <a class="social-btn" href="intent://www.tiktok.com/@abogadosdta#Intent;scheme=https;package=com.zhiliaoapp.musically;S.browser_fallback_url=https%3A%2F%2Ftiktok.com%2F%40abogadosdta;end">
-      <div class="social-icon" style="background:rgba(0,0,0,0.35);border-color:rgba(255,255,255,0.15)"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="#ff0050" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/><path fill="#00f2ea" d="M18.58 6.63a4.83 4.83 0 0 0 3.77 4.25V7.44a4.85 4.85 0 0 1-2.76-3.19h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.56-1.56 2.89 2.89 0 0 0 2.56 1.56 2.89 2.89 0 0 0 2.88-2.5V4.25h3.44v2.38z"/></svg></div>
-      <span class="social-label">TikTok</span>
-    </a>
-  </div>
-
-  <!-- ── SERVICIOS ── -->
-  <div class="section fade-up d4">
-    <div class="section-title">Servicios Jurídicos</div>
-    <div class="services-grid">
-      <div class="service-item ripple-btn" onclick="openSvc('svc_admin')" >
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg></span>
-        <span class="service-name">Administrativo y Contractual</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-      <div class="service-item ripple-btn" onclick="openSvc('svc_familia')" >
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></span>
-        <span class="service-name">Derecho de Familia</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-      <div class="service-item ripple-btn" onclick="openSvc('svc_civil')" >
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zM12 11.56l-1.9-3.56H9.5L12 13.24l2.5-5.24h-1.1L11.5 10l.5 1.56z"/></svg></span>
-        <span class="service-name">Derecho Civil</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-      <div class="service-item ripple-btn" onclick="openSvc('svc_penal')" >
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M1 21h12v2H1zm5.5-4h1c.28 0 .5-.22.5-.5v-1h-2v1c0 .28.22.5.5.5zm4 0h1c.28 0 .5-.22.5-.5v-1h-2v1c0 .28.22.5.5.5zm4 0h1c.28 0 .5-.22.5-.5v-1h-2v1c0 .28.22.5.5.5zM22.3 9.3l-9.1-9.1-1.41 1.41 1.19 1.19-5.04 5.04-1.19-1.19-1.41 1.41 4.55 4.55 1.41-1.41-1.19-1.19L15.15 5l1.19 1.19L17.75 4.8l1.19 1.19L22.3 9.3z"/></svg></span>
-        <span class="service-name">Derecho Penal</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-      <div class="service-item ripple-btn" onclick="openSvc('svc_disc')" >
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></span>
-        <span class="service-name">Disciplinario</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-      <div class="service-item ripple-btn" onclick="openSvc('svc_transito')" >
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg></span>
-        <span class="service-name">Accidentes de Tránsito</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-      <div class="service-item ripple-btn" onclick="openSvc('svc_laboral')" >
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M9 4c-4.42 0-8 3.58-8 8H1v1c0 1.66 1.34 3 3 3h1v-4c0-3.31 2.69-6 6-6s6 2.69 6 6v4h1c1.66 0 3-1.34 3-3v-1h-.17C20.83 7.61 17.35 4 13 4H9zm3 7c-2.21 0-4 1.79-4 4v5h2v-5c0-1.1.9-2 2-2s2 .9 2 2v5h2v-5c0-2.21-1.79-4-4-4z"/></svg></span>
-        <span class="service-name">Derecho Laboral</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-      <div class="service-item ripple-btn" onclick="openSvc('svc_militar')" >
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></span>
-        <span class="service-name">Justicia Penal Militar</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-      <div class="service-item ripple-btn" onclick="openSvc('svc_comercial')"  style="grid-column: 1 / -1;">
-        <span class="service-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/></svg></span>
-        <span class="service-name">Derecho Comercial</span>
-        <span class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── MOTTO ── -->
-  <div class="motto fade-up d5">
+  <!-- ── LEMA ── -->
+  <section class="motto fade-up d4">
     <div class="motto-main">"Tu Derecho, Nuestra Misión."</div>
-    <div class="motto-main" style="font-size:1.08rem;color:var(--muted);font-weight:400;">"Tu Tranquilidad, Nuestro Compromiso."</div>
-    <div class="gold-sep" style="margin:16px auto 12px;width:160px;"><span>✦</span></div>
+    <div class="motto-alt">"Tu Tranquilidad, Nuestro Compromiso."</div>
+    <div class="gold-sep" aria-hidden="true"><span>✦</span></div>
     <div class="motto-sub">DEFENSA · TRANSPARENCIA · ACCIÓN</div>
-  </div>
+  </section>
 
   <!-- ── FOOTER ── -->
-  <div class="card-footer fade-up d6">
-    <div>
-      <div class="footer-brand">Abogados DTA</div>
-      <div class="footer-tagline">Defensa · Transparencia · Acción</div>
+  <footer class="card-footer fade-up d5">
+    <div class="footer-brand">Abogados DTA</div>
+    <div class="footer-tagline">Alí Montalvo Avila · Bogotá, Colombia</div>
+    <p class="aviso-legal">La información de esta tarjeta es informativa y no constituye asesoría jurídica.</p>
+    <div class="konfio-badge">
+      <span class="kb">KONFÍO ZINC</span>
+      <span class="kc">© <span id="anio">2025</span> · <a href="privacidad.html">Privacidad</a></span>
     </div>
-    <div style="text-align:right">
-      <div style="font-family:'Montserrat',sans-serif;font-size:0.76rem;font-weight:800;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase">KONFÍO ZINC</div>
-      <div style="font-size:0.7rem;color:var(--muted);margin-top:3px;letter-spacing:0.04em">© 2026 · Todos los derechos reservados</div>
-    </div>
-  </div>
+  </footer>
+</div>
 
-
-  <a class="fab-wa" href="https://wa.me/573105838217" title="Escribir por WhatsApp" aria-label="Escribir por WhatsApp">
-  <span class="wa-ring3"></span>
-  <span class="wa-shine"></span>
-  <svg viewBox="0 0 24 24" width="30" height="30" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.526 5.855L.057 23.5a.5.5 0 0 0 .614.635l5.788-1.519A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.513-5.224-1.407l-.374-.22-3.884 1.02 1.037-3.786-.242-.388A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-  </svg>
+<a class="fab-wa" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" title="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.347-.347.52-.52.174-.174.232-.298.347-.497.116-.198.058-.371-.014-.52-.072-.148-.643-1.55-.881-2.114-.235-.554-.475-.48-.652-.489-.169-.008-.363-.01-.557-.01-.194 0-.51.073-.777.371-.267.298-1.02.996-1.02 2.428 0 1.432 1.045 2.816 1.19 3.01.145.194 2.055 3.14 4.98 4.402.696.3 1.24.479 1.663.613.699.222 1.335.191 1.838.116.56-.084 1.72-.703 1.963-1.382.242-.679.242-1.26.17-1.382-.073-.122-.267-.194-.564-.343M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>
 </a>
 
-</div><!-- /card-wrap -->
-
-<!-- ── SHARE MODAL ── -->
-<div class="share-overlay" id="shareOverlay" onclick="if(event.target===this)this.classList.remove('active')">
-  <div class="share-sheet">
-    <div class="share-title">Compartir Tarjeta</div>
-    <div class="share-sub">Dr. Alí Montalvo Avila – Abogados DTA</div>
-    <div class="share-grid">
-      <a class="share-opt" href="https://api.whatsapp.com/send?text=Te%20comparto%20la%20tarjeta%20digital%20del%20Dr.%20Al%C3%AD%20Montalvo%20Avila%20-%20Abogados%20DTA%20%2B57%20310%20583%208217">
-        <div class="share-opt-icon" style="color:#25d366;border-color:rgba(37,211,102,0.3)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.526 5.855L.057 23.5a.5.5 0 0 0 .614.635l5.788-1.519A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.513-5.224-1.407l-.374-.22-3.884 1.02 1.037-3.786-.242-.388A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        </div>
-        <span class="share-opt-label">WhatsApp</span>
-      </a>
-      <a class="share-opt" href="sms:?body=Tarjeta%20digital%20Abogados%20DTA%20-%20Al%C3%AD%20Montalvo%20%2B57%20310%20583%208217">
-        <div class="share-opt-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg></div>
-        <span class="share-opt-label">SMS</span>
-      </a>
-      <a class="share-opt" href="mailto:?subject=Tarjeta%20Digital%20Abogados%20DTA&body=Contacto%20del%20Dr.%20Al%C3%AD%20Montalvo%20Avila%20-%20%2B57%20310%20583%208217%20-%20alimontalvo%40hotmail.com">
-        <div class="share-opt-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-        <span class="share-opt-label">Email</span>
-      </a>
-      <div class="share-opt" onclick="copyLink()">
-        <div class="share-opt-icon" id="copyIcon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></div>
-        <span class="share-opt-label" id="copyLabel">Copiar</span>
-      </div>
-    </div>
-    <button class="btn-close-share" onclick="document.getElementById('shareOverlay').classList.remove('active')">
-      Cerrar
-    </button>
+<!-- ── MODAL ÚNICO ── -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+  <div class="sheet" role="document">
+    <button class="cerrar" id="btnCerrar" type="button" aria-label="Cerrar ventana">✕</button>
+    <h2 class="sheet-titulo" id="modalTitulo"></h2>
+    <div class="sheet-body" id="modalBody"></div>
   </div>
 </div>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="scripts.js"></script>
-
-
-<!-- ── FLOATING WHATSAPP BUTTON ── -->
-
-
-
-
-
-
-
-
-<!-- ── SERVICE MODALS ── -->
-<div class="svc-overlay" id="svc_admin" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">🏛️</div>
-      <div class="svc-header-text">
-        <h3>Derecho Administrativo y Contractual</h3>
-        <p>Estado · Contratos · Responsabilidad</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Blindamos sus derechos frente al Estado y en sus relaciones contractuales. Experiencia comprobada en litigios contra entidades públicas y en la ejecución de contratos estatales.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Nulidad y restablecimiento del derecho ante entidades públicas</div>
-<div class="svc-point">Contratos estatales: licitaciones, concursos y selección abreviada</div>
-<div class="svc-point">Responsabilidad extracontractual del Estado por daño antijurídico</div>
-<div class="svc-point">Acciones de repetición y llamamiento en garantía</div>
-<div class="svc-point">Recursos de reposición y apelación ante organismos gubernamentales</div>
-<div class="svc-point">Reclamaciones por incumplimiento de contratos administrativos</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Administrativo%20y%20Contractual">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="svc-overlay" id="svc_familia" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">👨‍👩‍👧</div>
-      <div class="svc-header-text">
-        <h3>Derecho de Familia</h3>
-        <p>Familia · Custodia · Sucesiones</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Acompañamos a las familias colombianas en sus momentos más sensibles con discreción, humanidad y solidez jurídica. Protegemos sus derechos y los de sus seres queridos.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Divorcios de mutuo acuerdo y contenciosos</div>
-<div class="svc-point">Custodia, tenencia y regulación de visitas de menores</div>
-<div class="svc-point">Cuotas alimentarias y alimentos para mayores</div>
-<div class="svc-point">Filiación, reconocimiento de paternidad y adopciones</div>
-<div class="svc-point">Violencia intrafamiliar y medidas de protección</div>
-<div class="svc-point">Sucesiones, herencias y liquidación de sociedad conyugal</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20de%20Familia">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="svc-overlay" id="svc_civil" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">⚖️</div>
-      <div class="svc-header-text">
-        <h3>Derecho Civil</h3>
-        <p>Contratos · Bienes · Obligaciones</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Representamos sus intereses patrimoniales con rigor técnico y estrategia efectiva. Defensa sólida en procesos civiles de cualquier cuantía y complejidad.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Contratos de compraventa, arrendamiento y comodato</div>
-<div class="svc-point">Responsabilidad civil extracontractual por daños y perjuicios</div>
-<div class="svc-point">Prescripción adquisitiva de dominio y servidumbres</div>
-<div class="svc-point">Procesos ejecutivos de cobro de obligaciones</div>
-<div class="svc-point">Derechos reales: posesión, usufructo, propiedad horizontal</div>
-<div class="svc-point">Simulación de contratos y acción pauliana</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Civil">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="svc-overlay" id="svc_penal" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">🔨</div>
-      <div class="svc-header-text">
-        <h3>Derecho Penal</h3>
-        <p>Defensa · Garantías · Libertad</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Defensa técnica especializada en todas las etapas del proceso penal. Protegemos su libertad y garantías constitucionales con estrategias jurídicas de alto nivel.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Defensa en audiencias preliminares e imputación de cargos</div>
-<div class="svc-point">Solicitudes de libertad y sustitución de medidas de aseguramiento</div>
-<div class="svc-point">Habeas corpus y tutelas contra detenciones arbitrarias</div>
-<div class="svc-point">Recursos de apelación y casación ante tribunales superiores</div>
-<div class="svc-point">Principio de oportunidad y preacuerdos con la Fiscalía</div>
-<div class="svc-point">Defensa en delitos contra la vida, patrimonio y administración pública</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Penal">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="svc-overlay" id="svc_disc" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">🛡️</div>
-      <div class="svc-header-text">
-        <h3>Derecho Disciplinario</h3>
-        <p>Servidores Públicos · Procuraduría</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Especialistas en la defensa de servidores públicos ante los órganos de control disciplinario. Protegemos su carrera y reputación institucional con estrategia probada.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Defensa ante la Procuraduría General de la Nación</div>
-<div class="svc-point">Investigaciones de la Personería Municipal y Departamental</div>
-<div class="svc-point">Recursos de reposición y apelación en procesos disciplinarios</div>
-<div class="svc-point">Faltas gravísimas, graves y leves de servidores públicos</div>
-<div class="svc-point">Procesos disciplinarios contra militares y policías activos</div>
-<div class="svc-point">Nulidades procesales y acciones de tutela disciplinarias</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Disciplinario">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="svc-overlay" id="svc_transito" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">🚗</div>
-      <div class="svc-header-text">
-        <h3>Accidentes de Tránsito</h3>
-        <p>SOAT · Indemnizaciones · Seguros</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Reclamamos las indemnizaciones que usted merece tras un accidente de tránsito. Gestionamos todo el proceso frente a aseguradoras y entidades competentes.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Reclamaciones ante el SOAT por lesiones y muerte en accidente</div>
-<div class="svc-point">Indemnizaciones por incapacidad permanente y secuelas físicas</div>
-<div class="svc-point">Responsabilidad civil de conductores y propietarios de vehículos</div>
-<div class="svc-point">Acciones penales por lesiones culposas u homicidio culposo</div>
-<div class="svc-point">Negociaciones extrajudiciales con compañías aseguradoras</div>
-<div class="svc-point">Asesoría a conductores imputados en procesos penales de tránsito</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Accidentes%20de%20Tránsito">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="svc-overlay" id="svc_laboral" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">👷</div>
-      <div class="svc-header-text">
-        <h3>Derecho Laboral</h3>
-        <p>Trabajo · Despidos · Prestaciones</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Defendemos los derechos de los trabajadores colombianos y asesoramos a empleadores en el cumplimiento de la normativa laboral vigente para evitar contingencias.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Despidos injustos y reintegros laborales con indemnización</div>
-<div class="svc-point">Liquidación de prestaciones sociales, cesantías y vacaciones</div>
-<div class="svc-point">Acoso laboral y ambiente de trabajo hostil (Ley 1010)</div>
-<div class="svc-point">Demandas ante el Ministerio de Trabajo e inspecciones</div>
-<div class="svc-point">Contratos laborales, nómina y seguridad social</div>
-<div class="svc-point">Pensiones de vejez, invalidez y sobrevivientes ante Colpensiones</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Laboral">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="svc-overlay" id="svc_militar" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">🎖️</div>
-      <div class="svc-header-text">
-        <h3>Justicia Penal Militar</h3>
-        <p>Fuerzas Armadas · Fuero Militar</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Defensa exclusiva para integrantes de las Fuerzas Militares y Policía Nacional. Conocemos a fondo el fuero penal militar y protegemos el honor y carrera de los uniformados.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Defensa ante el Tribunal Superior Militar y Policial</div>
-<div class="svc-point">Delitos relacionados con el servicio activo de las FF.MM.</div>
-<div class="svc-point">Habeas corpus y libertad de uniformados detenidos</div>
-<div class="svc-point">Procesos disciplinarios internos en batallones y brigadas</div>
-<div class="svc-point">Protección de derechos de soldados, suboficiales y oficiales</div>
-<div class="svc-point">Asesoría en retiro del servicio activo e impugnación de sanciones</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Justicia%20Penal%20Militar">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="svc-overlay" id="svc_comercial" onclick="if(event.target===this)closeSvc()">
-  <div class="svc-sheet">
-    <div class="svc-handle"></div>
-    <div class="svc-header">
-      <div class="svc-header-icon">🤝</div>
-      <div class="svc-header-text">
-        <h3>Derecho Comercial</h3>
-        <p>Empresas · Contratos · Sociedades</p>
-      </div>
-    </div>
-    <div class="svc-body">
-      <p class="svc-description">Asesoría jurídica integral para empresas y comerciantes. Acompañamos el ciclo de vida de los negocios con soluciones legales eficientes y orientadas al resultado.</p>
-      <div class="svc-points-title">¿Cómo podemos ayudarle?</div>
-      <div class="svc-points">
-<div class="svc-point">Constitución de S.A.S., S.A., Ltda. y demás sociedades</div>
-<div class="svc-point">Contratos mercantiles: distribución, franquicia, agencia comercial</div>
-<div class="svc-point">Recuperación de cartera y procesos ejecutivos mercantiles</div>
-<div class="svc-point">Procesos de insolvencia empresarial y concordatos</div>
-<div class="svc-point">Propiedad industrial: marcas, patentes y secretos empresariales</div>
-<div class="svc-point">Resolución de conflictos entre socios y juntas directivas</div>
-      </div>
-      <a class="svc-cta" href="https://wa.me/573105838217?text=Hola%20Dr.%20Al%C3%AD%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Comercial">
-        ⚖️ &nbsp;Consultar este servicio
-      </a>
-      <button class="svc-close" onclick="closeSvc()">Cerrar</button>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
