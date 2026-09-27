@@ -9,6 +9,7 @@ const CONFIG = {
   cargo:      'Abogado',
   titulo:     'Esp. Derecho Administrativo y Contractual',
   ciudad:     'Bogotá, Colombia',
+  cobertura:  'Bogotá y en toda Colombia',
   telefono:   '+573105838217',            // formato internacional sin signos
   telefonoUI: '+57 310 583 8217',
   email:      'abogadosdta@gmail.com',    // corporativo
@@ -32,6 +33,17 @@ const SERVICIOS = [
   { t:'Derecho Laboral',              d:'Defensa de los derechos de los trabajadores y asesoría a empleadores en el cumplimiento de la normativa laboral vigente.' },
   { t:'Justicia Penal Militar',       d:'Defensa exclusiva para integrantes de las Fuerzas Militares y la Policía Nacional, con conocimiento del fuero penal militar.' },
   { t:'Derecho Comercial',            d:'Asesoría jurídica integral para empresas y comerciantes en todo el ciclo de vida del negocio.' }
+];
+
+/* Galería del carrusel: reemplace los archivos en assets/galeria/ por sus fotos
+   (mismo nombre) o cambie aquí las rutas. */
+const GALERIA = [
+  { src:'assets/galeria/slide-01.jpg', t:'Abogados DTA',                    d:'Alí Montalvo Avila · Blindaje Legal Para Quienes Protegen La Nación.' },
+  { src:'assets/galeria/slide-02.jpg', t:'Administrativo y Contractual',    d:'Litigios contra el Estado y contratos estatales.' },
+  { src:'assets/galeria/slide-03.jpg', t:'Derecho Penal',                   d:'Defensa técnica en todas las etapas del proceso penal.' },
+  { src:'assets/galeria/slide-04.jpg', t:'Derecho de Familia',              d:'Divorcios, custodia, alimentos y sucesiones.' },
+  { src:'assets/galeria/slide-05.jpg', t:'Derecho Laboral',                 d:'Despidos, prestaciones y seguridad social.' },
+  { src:'assets/galeria/slide-06.jpg', t:'Accidentes de Tránsito',          d:'Reclamación de indemnizaciones ante aseguradoras.' }
 ];
 
 /* ── utilidades ── */
@@ -103,7 +115,7 @@ function abrirSobre(){
     </div>
     <div class="row">
       <span class="ic" aria-hidden="true">📍</span>
-      <span><b>Atención</b><small>${esc(CONFIG.ciudad)}</small></span>
+      <span><b>Atención</b><small>${esc(CONFIG.cobertura)}</small></span>
     </div>
     <div class="row">
       <span class="ic" aria-hidden="true">📞</span>
@@ -198,6 +210,90 @@ function guardarContacto(){
   toast('Abriendo contacto para guardar…');
 }
 
+/* ── carrusel automático ── */
+function iniciarCarrusel(){
+  const pista  = $('#pista');
+  const puntos = $('#cPuntos');
+  if (!pista || !GALERIA.length) return;
+
+  pista.innerHTML = GALERIA.map((s, i) => `
+    <figure class="slide" data-i="${i}">
+      <img src="${s.src}" alt="${esc(s.t)}. ${esc(s.d)}" width="1000" height="750" decoding="async">
+    </figure>`).join('');
+
+  puntos.innerHTML = GALERIA.map((s, i) =>
+    `<button class="punto${i === 0 ? ' on' : ''}" type="button" data-ir="${i}" aria-label="Ver imagen ${i + 1}: ${esc(s.t)}"${i === 0 ? ' aria-current="true"' : ''}></button>`
+  ).join('');
+
+  let i = 0, timer = null, pausado = false, reanudar = null;
+  const reducir = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function ir(n){
+    i = (n + GALERIA.length) % GALERIA.length;
+    pista.style.transform = 'translateX(' + (-i * 100) + '%)';
+    puntos.querySelectorAll('.punto').forEach((p, k) => {
+      p.classList.toggle('on', k === i);
+      if (k === i) { p.setAttribute('aria-current', 'true'); } else { p.removeAttribute('aria-current'); }
+    });
+  }
+  function pausarTemporal(ms){
+    pausado = true;
+    clearTimeout(reanudar);
+    reanudar = setTimeout(() => { pausado = false; }, ms);
+  }
+  function tick(){
+    if (pausado || document.hidden || overlay.classList.contains('active')) return;
+    ir(i + 1);
+  }
+  function arrancar(){
+    if (reducir || timer) return;
+    timer = setInterval(tick, 4200);
+  }
+
+  $('#cPrev').onclick = () => { ir(i - 1); pausarTemporal(9000); };
+  $('#cNext').onclick = () => { ir(i + 1); pausarTemporal(9000); };
+  puntos.addEventListener('click', (e) => {
+    const b = e.target.closest('.punto');
+    if (!b) return;
+    ir(Number(b.dataset.ir));
+    pausarTemporal(9000);
+  });
+
+  // Deslizar con el dedo
+  let x0 = null, movido = false;
+  const carrusel = $('#carrusel');
+  carrusel.addEventListener('pointerdown', (e) => { x0 = e.clientX; movido = false; });
+  carrusel.addEventListener('pointermove', (e) => {
+    if (x0 === null) return;
+    if (Math.abs(e.clientX - x0) > 8) movido = true;
+  });
+  carrusel.addEventListener('pointerup', (e) => {
+    if (x0 === null) return;
+    const dx = e.clientX - x0;
+    x0 = null;
+    if (Math.abs(dx) > 40){ ir(dx < 0 ? i + 1 : i - 1); pausarTemporal(9000); }
+  });
+  carrusel.addEventListener('pointercancel', () => { x0 = null; });
+
+  // Pausa al pasar el mouse o al enfocar controles
+  carrusel.addEventListener('pointerenter', () => { pausado = true; });
+  carrusel.addEventListener('pointerleave', () => { pausado = false; });
+  carrusel.addEventListener('focusin',    () => { pausado = true; });
+  carrusel.addEventListener('focusout',   () => { pausado = false; });
+
+  // Tocar una imagen la abre en grande
+  pista.addEventListener('click', (e) => {
+    const fig = e.target.closest('.slide');
+    if (!fig || movido) return;
+    const s = GALERIA[Number(fig.dataset.i)];
+    abrirModal(s.t, `<img class="foto-full" src="${s.src}" alt="${esc(s.t)}. ${esc(s.d)}" width="1000" height="750">
+      <p class="hint">${esc(s.d)}</p>`);
+  });
+
+  ir(0);
+  arrancar();
+}
+
 /* ── arranque ── */
 document.addEventListener('DOMContentLoaded', () => {
   $('#aWhatsapp').href = waLink('Hola Dr. Alí, vi su tarjeta digital y necesito asesoría legal.');
@@ -205,6 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#aMapa').href     = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(CONFIG.ciudad);
   $('#aCorreo').href   = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Consulta jurídica – ' + CONFIG.firma);
   $('#anio').textContent = new Date().getFullYear();
+
+  iniciarCarrusel();
 
   $('#btnServicios').onclick = abrirServicios;
   $('#btnSobre').onclick     = abrirSobre;

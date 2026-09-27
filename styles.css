@@ -140,6 +140,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .card-footer{text-align:center;border-top:1px solid rgba(255,255,255,.06);padding-top:14px}
 .footer-brand{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold2)}
 .footer-tagline{font-size:.74rem;color:var(--muted);margin-top:2px}
+.footer-cob{font-size:.73rem;color:var(--gold2);margin-top:3px;font-weight:500}
 .aviso-legal{font-size:.64rem;color:#8a8a8a;margin:10px auto 0;max-width:300px;line-height:1.4}
 .konfio-badge{margin-top:12px;display:flex;flex-direction:column;gap:2px}
 .kb{font-size:.6rem;letter-spacing:.3em;color:var(--gold);font-weight:600}
@@ -222,6 +223,34 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .qr-box img{width:180px;height:180px}
 .hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0 12px;line-height:1.45}
 .sheet-foot{font-size:.66rem;color:#7d7d7d;text-align:center;margin-top:12px}
+
+/* ===== Galería en carrusel ===== */
+.galeria{margin:2px 0 8px}
+.carrusel{
+  position:relative;border-radius:18px;overflow:hidden;
+  border:1px solid var(--line);background:#0b0b0b;
+  box-shadow:0 14px 34px rgba(0,0,0,.5);
+}
+.pista{display:flex;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+.slide{flex:0 0 100%;cursor:zoom-in;position:relative}
+.slide img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover}
+.nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  font-size:1.15rem;line-height:1;color:var(--gold);
+  background:rgba(0,0,0,.55);border:1px solid var(--line);
+  transition:background .2s ease;
+}
+.nav.prev{left:7px}
+.nav.next{right:7px}
+@media (hover:hover){.nav:hover{background:rgba(212,175,55,.22)}}
+.puntos{position:absolute;left:0;right:0;bottom:9px;z-index:3;display:flex;justify-content:center;gap:6px}
+.punto{
+  width:7px;height:7px;padding:0;border-radius:999px;
+  background:rgba(255,255,255,.34);transition:all .25s ease;
+}
+.punto.on{width:20px;background:var(--gold)}
+.foto-full{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);display:block}
 
 /* ===== Toast ===== */
 .toast{

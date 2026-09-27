@@ -1,5 +1,5 @@
 /* Service worker — Abogados DTA */
-const CACHE_NAME = 'abogados-dta-v2';
+const CACHE_NAME = 'abogados-dta-v3';
 const PRECACHE_URLS = [
   './',
   './index.html',
