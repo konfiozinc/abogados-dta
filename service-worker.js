@@ -1,11 +1,12 @@
 /* Service worker — Abogados DTA */
-const CACHE_NAME = 'abogados-dta-v5';
+const CACHE_NAME = 'abogados-dta-v6';
 const PRECACHE_URLS = [
   './',
   './index.html',
   './styles.css',
   './scripts.js',
   './manifest.json',
+  './assets/galeria/fotos.json',
   './assets/logo/logo-dta.jpg',
   './assets/logo/icon-192.png',
   './assets/logo/icon-512.png',

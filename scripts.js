@@ -35,16 +35,35 @@ const SERVICIOS = [
   { t:'Derecho Comercial',            d:'Asesoría jurídica integral para empresas y comerciantes en todo el ciclo de vida del negocio.' }
 ];
 
-/* Galería del carrusel: reemplace los archivos en assets/galeria/ por sus fotos
-   (mismo nombre) o cambie aquí las rutas. */
-const GALERIA = [
-  { src:'assets/galeria/slide-01.jpg', t:'Abogados DTA',                    d:'Alí Montalvo Avila · Blindaje Legal Para Quienes Protegen La Nación.' },
-  { src:'assets/galeria/slide-02.jpg', t:'Administrativo y Contractual',    d:'Litigios contra el Estado y contratos estatales.' },
-  { src:'assets/galeria/slide-03.jpg', t:'Derecho Penal',                   d:'Defensa técnica en todas las etapas del proceso penal.' },
-  { src:'assets/galeria/slide-04.jpg', t:'Derecho de Familia',              d:'Divorcios, custodia, alimentos y sucesiones.' },
-  { src:'assets/galeria/slide-05.jpg', t:'Derecho Laboral',                 d:'Despidos, prestaciones y seguridad social.' },
-  { src:'assets/galeria/slide-06.jpg', t:'Accidentes de Tránsito',          d:'Reclamación de indemnizaciones ante aseguradoras.' }
+/* Galería del carrusel: se arma en tres bloques.
+   1) lámina de marca  2) tus fotos (assets/galeria/fotos.json)  3) servicios */
+const GALERIA_MARCA = [
+  { src:'assets/galeria/slide-01.jpg', t:'Abogados DTA', d:'Alí Montalvo Avila · Blindaje Legal Para Quienes Protegen La Nación.' }
 ];
+const GALERIA_SERVICIOS = [
+  { src:'assets/galeria/slide-02.jpg', t:'Administrativo y Contractual', d:'Litigios contra el Estado y contratos estatales.' },
+  { src:'assets/galeria/slide-03.jpg', t:'Derecho Penal',                d:'Defensa técnica en todas las etapas del proceso penal.' },
+  { src:'assets/galeria/slide-04.jpg', t:'Derecho de Familia',           d:'Divorcios, custodia, alimentos y sucesiones.' },
+  { src:'assets/galeria/slide-05.jpg', t:'Derecho Laboral',              d:'Despidos, prestaciones y seguridad social.' },
+  { src:'assets/galeria/slide-06.jpg', t:'Accidentes de Tránsito',       d:'Reclamación de indemnizaciones ante aseguradoras.' }
+];
+
+/* Fotos propias: se leen de assets/galeria/fotos.json (si no existe, no pasa nada) */
+async function cargarFotos(){
+  try {
+    const ctrl = new AbortController();
+    const corte = setTimeout(() => ctrl.abort(), 2500);
+    const r = await fetch('assets/galeria/fotos.json', { cache: 'no-store', signal: ctrl.signal });
+    clearTimeout(corte);
+    if (!r.ok) return [];
+    const texto = await r.text();
+    const j = JSON.parse(texto.replace(/^\uFEFF/, ''));   // tolera BOM si el archivo se editó con Windows
+    if (!Array.isArray(j.fotos)) return [];
+    return j.fotos
+      .filter(f => f && f.src)
+      .map(f => ({ src: f.src, t: f.t || 'Abogados DTA', d: f.d || '' }));
+  } catch (e) { return []; }
+}
 
 /* ── utilidades ── */
 const $  = (s) => document.querySelector(s);
@@ -211,10 +230,14 @@ function guardarContacto(){
 }
 
 /* ── carrusel automático ── */
-function iniciarCarrusel(){
+async function iniciarCarrusel(){
   const pista  = $('#pista');
   const puntos = $('#cPuntos');
-  if (!pista || !GALERIA.length) return;
+  if (!pista) return;
+
+  const fotos  = await cargarFotos();
+  const GALERIA = GALERIA_MARCA.concat(fotos, GALERIA_SERVICIOS);
+  if (!GALERIA.length) return;
 
   pista.innerHTML = GALERIA.map((s, i) => `
     <figure class="slide" data-i="${i}">
