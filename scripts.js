@@ -227,6 +227,7 @@ function iniciarCarrusel(){
 
   let i = 0, timer = null, pausado = false, reanudar = null;
   const reducir = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const track = (n, e) => { if (typeof dtaTrack === 'function') dtaTrack(n, e); };
 
   function ir(n){
     i = (n + GALERIA.length) % GALERIA.length;
@@ -250,13 +251,14 @@ function iniciarCarrusel(){
     timer = setInterval(tick, 4200);
   }
 
-  $('#cPrev').onclick = () => { ir(i - 1); pausarTemporal(9000); };
-  $('#cNext').onclick = () => { ir(i + 1); pausarTemporal(9000); };
+  $('#cPrev').onclick = () => { ir(i - 1); pausarTemporal(9000); track('galeria_navegar', 'anterior'); };
+  $('#cNext').onclick = () => { ir(i + 1); pausarTemporal(9000); track('galeria_navegar', 'siguiente'); };
   puntos.addEventListener('click', (e) => {
     const b = e.target.closest('.punto');
     if (!b) return;
     ir(Number(b.dataset.ir));
     pausarTemporal(9000);
+    track('galeria_navegar', 'punto_' + (Number(b.dataset.ir) + 1));
   });
 
   // Deslizar con el dedo
@@ -288,6 +290,7 @@ function iniciarCarrusel(){
     const s = GALERIA[Number(fig.dataset.i)];
     abrirModal(s.t, `<img class="foto-full" src="${s.src}" alt="${esc(s.t)}. ${esc(s.d)}" width="1000" height="750">
       <p class="hint">${esc(s.d)}</p>`);
+    track('galeria_imagen', s.t);
   });
 
   ir(0);
