@@ -38,6 +38,7 @@ const SERVICIOS = [
 /* Galería del carrusel: se arma en tres bloques.
    1) lámina de marca  2) tus fotos (assets/galeria/fotos.json)  3) servicios */
 const GALERIA_MARCA = [
+  { src:'assets/img/portada.webp', t:'Portada de Abogados DTA', d:'Retrato profesional de Alí Montalvo.' },
   { src:'assets/galeria/slide-01.jpg', t:'Abogados DTA', d:'Alí Montalvo Avila · Blindaje Legal Para Quienes Protegen La Nación.' }
 ];
 const GALERIA_SERVICIOS = [

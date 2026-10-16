@@ -161,18 +161,17 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 /* ===== FAB WhatsApp (anclado al contenedor) ===== */
 .fab-wa{
   position:fixed;z-index:40;
-  left:50%;transform:translateX(-50%);
-  bottom:calc(16px + env(safe-area-inset-bottom));
-  width:min(var(--maxw),calc(100vw - 24px));
-  display:flex;justify-content:flex-end;pointer-events:none;
+  right:max(20px,calc((100vw - var(--maxw))/2 + 20px));
+  bottom:calc(90px + env(safe-area-inset-bottom));
+  width:56px;height:56px;display:block;pointer-events:auto;
 }
 .fab-wa::after{
-  content:"";pointer-events:auto;
-  width:56px;height:56px;border-radius:50%;
+  content:"";position:absolute;inset:0;pointer-events:none;
+  border-radius:50%;
   background:linear-gradient(180deg,#2ee06f,var(--wa));
   box-shadow:0 10px 26px rgba(37,211,102,.36);
 }
-.fab-wa svg{position:absolute;right:13px;bottom:13px;color:#08301a;pointer-events:none}
+.fab-wa svg{position:absolute;inset:13px;color:#08301a;pointer-events:none}
 
 /* ===== Modal ===== */
 .overlay{
@@ -282,6 +281,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 /* ===== Responsive ===== */
 @media (max-width:500px){
   body{width:100%;padding:12px 8px calc(26px + env(safe-area-inset-bottom))}
+  .fab-wa{right:20px;bottom:calc(90px + env(safe-area-inset-bottom))}
   .card-wrap{padding:22px 14px 18px}
   .hero-cover{height:145px;margin:-22px -14px 0}
   .hero .lawyer-avatar{width:100px;height:100px;margin-top:-52px}
