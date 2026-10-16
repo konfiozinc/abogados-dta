@@ -7,7 +7,7 @@ const CONFIG = {
   firma:      'Abogados DTA',
   nombre:     'Alí Montalvo Avila',
   cargo:      'Abogado',
-  titulo:     'Esp. Derecho Administrativo y Contractual',
+  titulo:     'Derecho administrativo y contractual',
   ciudad:     'Bogotá, Colombia',
   cobertura:  'Bogotá y en toda Colombia',
   telefono:   '+573105838217',            // formato internacional sin signos
@@ -24,12 +24,12 @@ const CONFIG = {
 
 /* Los 9 servicios: título + una frase. */
 const SERVICIOS = [
-  { t:'Administrativo y Contractual', d:'Blindamos sus derechos frente al Estado y en sus relaciones contractuales, con experiencia en litigios contra entidades públicas y en contratos estatales.' },
+  { t:'Administrativo y Contractual', d:'Asesoría y representación jurídica en asuntos frente al Estado y en relaciones contractuales. Asuntos de preferencia: derecho administrativo y contractual.' },
   { t:'Derecho de Familia',           d:'Acompañamiento en los momentos más sensibles de la familia, con discreción y solidez jurídica: divorcios, custodia, alimentos y sucesiones.' },
   { t:'Derecho Civil',                d:'Representación de sus intereses patrimoniales con rigor técnico: contratos, bienes, obligaciones y responsabilidad civil de cualquier cuantía.' },
   { t:'Derecho Penal',                d:'Defensa técnica en todas las etapas del proceso penal, protegiendo su libertad y sus garantías constitucionales.' },
   { t:'Disciplinario',                d:'Defensa de servidores públicos ante los órganos de control disciplinario, protegiendo su carrera y reputación institucional.' },
-  { t:'Accidentes de Tránsito',       d:'Reclamación de las indemnizaciones que usted merece tras un accidente, gestionando el proceso ante aseguradoras y entidades competentes.' },
+  { t:'Accidentes de Tránsito',       d:'Asesoría en reclamaciones por accidentes de tránsito ante aseguradoras y entidades competentes.' },
   { t:'Derecho Laboral',              d:'Defensa de los derechos de los trabajadores y asesoría a empleadores en el cumplimiento de la normativa laboral vigente.' },
   { t:'Justicia Penal Militar',       d:'Defensa exclusiva para integrantes de las Fuerzas Militares y la Policía Nacional, con conocimiento del fuero penal militar.' },
   { t:'Derecho Comercial',            d:'Asesoría jurídica integral para empresas y comerciantes en todo el ciclo de vida del negocio.' }
@@ -130,7 +130,7 @@ function abrirSobre(){
     </div>
     <div class="row">
       <span class="ic" aria-hidden="true">🎓</span>
-      <span><b>Especialización</b><small>${esc(CONFIG.titulo)}</small></span>
+      <span><b>Asuntos de preferencia</b><small>${esc(CONFIG.titulo)}</small></span>
     </div>
     <div class="row">
       <span class="ic" aria-hidden="true">📍</span>
