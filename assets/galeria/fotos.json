@@ -1,1 +1,24 @@
-{"comentario":"Sin fotos todavia. Deja las imagenes en assets/galeria/fotos/ y ejecuta de nuevo este script.","fotos":[]}
+{
+  "fotos": [
+    {
+      "src": "assets/img/galeria/galeria-1.webp",
+      "t": "Ficha de contacto de Abogados DTA",
+      "d": "Pieza gráfica con datos de contacto, código QR y áreas de servicio."
+    },
+    {
+      "src": "assets/img/galeria/galeria-2.webp",
+      "t": "Corte Constitucional: Sentencia T-517 de 2025",
+      "d": "Pieza informativa sobre una decisión de la Corte Constitucional."
+    },
+    {
+      "src": "assets/img/galeria/galeria-3.webp",
+      "t": "Asesoría en accidentes de tránsito",
+      "d": "Pieza gráfica de Abogados DTA sobre atención de asuntos relacionados con accidentes de tránsito."
+    },
+    {
+      "src": "assets/img/galeria/galeria-4.webp",
+      "t": "Diseño de tarjeta digital",
+      "d": "Maqueta gráfica de tarjeta digital con datos de contacto de ejemplo."
+    }
+  ]
+}

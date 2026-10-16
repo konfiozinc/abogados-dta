@@ -38,7 +38,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 /* ===== Tarjeta ===== */
 .card-wrap{
   position:relative;
-  width:100%;
+  width:min(100%,calc(100vw - 24px),var(--maxw));min-width:0;flex:0 1 auto;
   max-width:var(--maxw);
   background:linear-gradient(180deg,var(--card),#0c0c0c 55%,#0a0a0a);
   border:1px solid var(--line);
@@ -59,11 +59,21 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 
 /* ===== Hero ===== */
 .hero{position:relative;text-align:center;padding-bottom:4px}
+.hero-cover{
+  height:164px;margin:-26px -18px 0;overflow:hidden;position:relative;
+  background:#16120b;border-radius:var(--radius) var(--radius) 0 0;
+}
+.hero-cover img{
+  width:100%;height:100%;object-fit:cover;object-position:center 8%;
+  filter:brightness(.78);display:block;
+}
+.hero .lawyer-avatar{
+  position:relative;width:112px;height:112px;border-radius:50%;object-fit:cover;
+  margin:-58px auto 12px;border:2px solid var(--gold);
+  box-shadow:0 0 0 6px rgba(212,175,55,.12),0 12px 30px rgba(0,0,0,.65);
+}
 .hero img{
-  width:118px;height:118px;border-radius:50%;object-fit:cover;
-  margin:2px auto 14px;
-  border:2px solid var(--gold);
-  box-shadow:0 0 0 6px rgba(212,175,55,.07),0 12px 30px rgba(0,0,0,.55);
+  max-width:100%;
 }
 .firm-name{
   font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;
@@ -89,11 +99,12 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 
 /* ===== Acciones ===== */
 .actions{
-  display:grid;grid-template-columns:repeat(3,1fr);
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:10px;margin:20px 0 12px;
 }
 .action-btn{
   display:flex;flex-direction:column;align-items:center;gap:7px;
+  min-width:0;
   padding:13px 6px 11px;
   background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
   border:1px solid rgba(255,255,255,.07);
@@ -117,7 +128,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .action-label{font-size:.72rem;font-weight:500;letter-spacing:.02em;color:#e6e6e6}
 
 /* ===== Secundarias ===== */
-.secundarias{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.secundarias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:18px}
 .sec-btn{
   padding:12px 10px;border-radius:14px;
   border:1px solid var(--line);
@@ -233,7 +244,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 }
 .pista{display:flex;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
 .slide{flex:0 0 100%;cursor:zoom-in;position:relative}
-.slide img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover}
+.slide img{width:100%;height:300px;display:block;object-fit:contain;background:#090909}
 .nav{
   position:absolute;top:50%;transform:translateY(-50%);z-index:3;
   width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
@@ -269,17 +280,17 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* ===== Responsive ===== */
-@media (max-width:380px){
-  body{padding:12px 8px calc(26px + env(safe-area-inset-bottom))}
+@media (max-width:500px){
+  body{width:100%;padding:12px 8px calc(26px + env(safe-area-inset-bottom))}
   .card-wrap{padding:22px 14px 18px}
-  .hero img{width:104px;height:104px}
+  .hero-cover{height:145px;margin:-22px -14px 0}
+  .hero .lawyer-avatar{width:100px;height:100px;margin-top:-52px}
   .lawyer-name{font-size:1.5rem}
-  .actions{gap:8px}
+  .actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .action-icon{width:40px;height:40px}
   .action-label,.sec-btn{font-size:.68rem}
 }
 @media (max-width:340px){
-  .actions{grid-template-columns:repeat(2,1fr)}
   .secundarias{grid-template-columns:1fr}
 }
 

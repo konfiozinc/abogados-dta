@@ -1,5 +1,5 @@
 /* Service worker — Abogados DTA */
-const CACHE_NAME = 'abogados-dta-v6';
+const CACHE_NAME = 'abogados-dta-v7';
 const PRECACHE_URLS = [
   './',
   './index.html',
@@ -10,7 +10,14 @@ const PRECACHE_URLS = [
   './assets/logo/logo-dta.jpg',
   './assets/logo/icon-192.png',
   './assets/logo/icon-512.png',
-  './assets/logo/favicon-64.png'
+  './assets/logo/favicon-64.png',
+  './assets/img/perfil.webp',
+  './assets/img/portada.webp',
+  './assets/logo/og-image.jpg',
+  './assets/img/galeria/galeria-1.webp',
+  './assets/img/galeria/galeria-2.webp',
+  './assets/img/galeria/galeria-3.webp',
+  './assets/img/galeria/galeria-4.webp'
 ];
 
 self.addEventListener('install', (event) => {
